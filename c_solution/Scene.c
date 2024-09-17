@@ -1,5 +1,7 @@
-#include "Scene.h"
 #include <stdio.h>
+
+#include "Scene.h"
+#include "Skin.h"
 
 void init_Scene(struct Scene* this, struct UiDefaultSettings* settings)
 {
@@ -9,8 +11,29 @@ void init_Scene(struct Scene* this, struct UiDefaultSettings* settings)
     this->_playerpos_m = 0;
     init_PlayGround(&this->_pground, this->_playground_n, this->_playground_m, settings);
     init_Player(&this->_player, settings);
+    init_Market(&this->_market);
 }
 
+
+void showMarketSkins(struct Scene* this)
+{
+    struct Skin s = openSkinMarket(&this->_market); 
+    if (s.sprite == '\0')
+        return;
+
+    if (s.cost > this->_player.money)
+    {        
+        printf("\nNot enough money!");
+    } 
+    else
+    {
+        setSprite(&this->_player, s.sprite);
+        this->_player.money -= s.cost;
+    } 
+
+    while(getchar() != '\n');
+    getchar();
+}
 
 void refreshCoins(struct Scene* this)
 {

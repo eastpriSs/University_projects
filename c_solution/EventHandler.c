@@ -10,6 +10,7 @@ enum EventType match()
     case 'D': return PRESSED_D;
     case 'Q': return PRESSED_Q; 
     case 'E': return PRESSED_E; 
+    case 'M': return PRESSED_M;
     }
     return PRESSED_UNKNOWN;
 }

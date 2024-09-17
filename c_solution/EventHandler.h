@@ -3,6 +3,7 @@
 #include <ctype.h>
 
 enum EventType {PRESSED_W, PRESSED_A, PRESSED_S, 
-                PRESSED_D, PRESSED_Q, PRESSED_E, PRESSED_UNKNOWN};
+                PRESSED_D, PRESSED_Q, PRESSED_E, PRESSED_M, 
+                PRESSED_UNKNOWN};
 
 enum EventType match();

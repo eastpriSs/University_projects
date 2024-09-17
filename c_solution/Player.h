@@ -9,3 +9,4 @@ struct Player
 
 void init_Player(struct Player*, struct UiDefaultSettings*);
 void print_Player(struct Player*);
+void setSprite(struct Player*, char);

@@ -2,8 +2,8 @@ CC=gcc
 
 all: game clean
 
-game: main.o Plate.o PlateMatrix.o PlayGround.o Player.o Scene.o Game.o EventHandler.o 
-	$(CC) main.o Plate.o PlateMatrix.o PlayGround.o Player.o Scene.o Game.o EventHandler.o -o game
+game: main.o Plate.o PlateMatrix.o PlayGround.o Player.o Scene.o Game.o EventHandler.o Market.o
+	$(CC) main.o Plate.o PlateMatrix.o PlayGround.o Player.o Scene.o Game.o EventHandler.o Market.o -o game
 
 main.o: main.c
 	$(CC) -c main.c
@@ -28,6 +28,9 @@ Game.o: Game.c
 
 EventHandler.o: EventHandler.c
 	$(CC) -c EventHandler.c
+
+Market.o: Market.c
+	$(CC) -c Market.c
 
 clean:
 	del -rf *.o

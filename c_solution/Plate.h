@@ -11,4 +11,4 @@ struct Plate
 };
 
 void init_Plate(struct Plate*, struct UiDefaultSettings*);
-void print_Plate(struct Plate*);
+void print_Plate(const struct Plate*);

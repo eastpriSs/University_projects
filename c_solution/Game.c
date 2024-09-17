@@ -39,6 +39,10 @@ void exec(struct Game* this)
             refreshPlayground(&this->scene);
             refreshCoins(&this->scene);
             break;
+        case PRESSED_M:
+            clearConsole();
+            showMarketSkins(&this->scene);
+            break;
         case PRESSED_Q:
             this->isExec = 0;
             break;

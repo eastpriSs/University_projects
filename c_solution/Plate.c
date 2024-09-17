@@ -8,7 +8,7 @@ void init_Plate(struct Plate* this, struct UiDefaultSettings* uis)
     this->_spriteWhenCoin = uis->plateCoinSprite;
 }
 
-void print_Plate(struct Plate* this)
+void print_Plate(const struct Plate* this)
 {
     //Здесь можно делегировать обязанность в singlton
     if (this->type == COIN)

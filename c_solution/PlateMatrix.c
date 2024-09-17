@@ -37,7 +37,7 @@ enum TypeOfPlate getPlateTypeOn(struct PlateMatrix* this, int n, int m)
     return this->_mtrx[n][m].type;
 }
 
-const struct PlateMatrix* getPlate(struct PlateMatrix* this, int n, int m)
+const struct Plate* getPlate(struct PlateMatrix* this, int n, int m)
 {
     return &this->_mtrx[n][m];
 }

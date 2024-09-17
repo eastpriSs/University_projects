@@ -8,6 +8,11 @@ void init_Player(struct Player* this, struct UiDefaultSettings* ui)
 }
 
 
+void setSprite(struct Player* this, char s)
+{
+    this->_sprite = s;
+}
+
 void print_Player(struct Player* this)
 {
     printf("%c", this->_sprite);
