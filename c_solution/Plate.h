@@ -1,4 +1,5 @@
 #pragma once
+#include "UiSettings.h"
 
 enum TypeOfPlate {DEFAULT, COIN};
 
@@ -9,5 +10,5 @@ struct Plate
     char _spriteWhenCoin;
 };
 
-void init_Plate(struct Plate*, char s);
+void init_Plate(struct Plate*, struct UiDefaultSettings*);
 void print_Plate(struct Plate*);

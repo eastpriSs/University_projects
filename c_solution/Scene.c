@@ -53,7 +53,7 @@ void show(struct Scene* this)
             char playerOnCurrentPlate = (i == this->_playerpos_n) && (j == this->_playerpos_m);
         
             if (playerOnCurrentPlate) {
-                if (this->_pground.ground._mtrx[i][j].type == COIN) {
+                if (getPlateTypeOn(&this->_pground.ground, i, j) == COIN) {
                     this->_player.money += 1;
                     refreshPlayground(this);
                     refreshCoins(this);
@@ -61,7 +61,7 @@ void show(struct Scene* this)
                 print_Player(&this->_player);
             }
             else {
-                print_Plate(&this->_pground.ground._mtrx[i][j]); // get(i,j)
+                print_Plate(getPlate(&this->_pground.ground, i, j));
             }
         }
         printf("\n");

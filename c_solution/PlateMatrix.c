@@ -15,7 +15,7 @@ void init_PlateMatrix(struct PlateMatrix* this, int n, int m, struct UiDefaultSe
         struct Plate* plateRow = (struct Plate*)(malloc(sizeof(struct Plate) * m));  
         
         for (int j = 0; j < m; ++j)
-            init_Plate(plateRow + j, sett->plateSprite);
+            init_Plate(plateRow + j, sett);
         
         this->_mtrx[i] = plateRow;
     }
@@ -30,4 +30,14 @@ void spawnCoinOn(struct PlateMatrix* this, int n, int m)
 void clearPlate(struct PlateMatrix* this, int n, int m)
 {
     this->_mtrx[n][m].type = DEFAULT;
+}
+
+enum TypeOfPlate getPlateTypeOn(struct PlateMatrix* this, int n, int m)
+{
+    return this->_mtrx[n][m].type;
+}
+
+const struct PlateMatrix* getPlate(struct PlateMatrix* this, int n, int m)
+{
+    return &this->_mtrx[n][m];
 }

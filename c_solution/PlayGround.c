@@ -15,8 +15,8 @@ void updateCoins(struct PlayGround* this)
         for (int j = 0; j < getM(&this->ground); ++j)
         {
             int s = 1;
-            int e = 10;
-            if ((rand() % (e - s + 1) + s) == 2)
+            int e = getM(&this->ground) + getN(&this->ground);
+            if ((rand() % (e - s + 1) + s) == 5)
             {
                 spawnCoinOn(&this->ground, i, j);
             }

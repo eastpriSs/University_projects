@@ -7,6 +7,7 @@ int main()
     struct UiDefaultSettings uiSetting;
     uiSetting.plateSprite = '.';
     uiSetting.playerSprite = '0';
+    uiSetting.plateCoinSprite = '$';
     uiSetting.playgroundSize_n = 30;
     uiSetting.playgroundSize_m = 30;
     

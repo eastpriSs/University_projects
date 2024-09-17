@@ -13,3 +13,5 @@ int getN(struct PlateMatrix*);
 int getM(struct PlateMatrix*);
 void spawnCoinOn(struct PlateMatrix*, int, int);
 void clearPlate(struct PlateMatrix*, int, int);
+enum TypeOfPlate getPlateTypeOn(struct PlateMatrix*, int, int);
+const struct PlateMatrix* getPlate(struct PlateMatrix*, int, int);

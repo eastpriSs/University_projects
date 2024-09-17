@@ -1,11 +1,11 @@
 #include "Plate.h"
 #include <stdio.h>
 
-void init_Plate(struct Plate* this, char s)
+void init_Plate(struct Plate* this, struct UiDefaultSettings* uis)
 {
     this->type = DEFAULT;
-    this->_sprite = s;
-    this->_spriteWhenCoin = '$';
+    this->_sprite = uis->plateSprite;
+    this->_spriteWhenCoin = uis->plateCoinSprite;
 }
 
 void print_Plate(struct Plate* this)
