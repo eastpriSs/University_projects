@@ -6,7 +6,6 @@
 struct PlayGround
 {
     struct PlateMatrix ground;
-    struct PlayGroundSize size;
 };
 
 void init_PlayGround(struct PlayGround*, int, int, struct UiDefaultSettings*);
