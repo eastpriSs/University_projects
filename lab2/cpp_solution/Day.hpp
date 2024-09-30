@@ -10,6 +10,7 @@ private:
 public:
 // in future add overload for rvalue
     void tryParse(const std::string&) noexcept(false);
+    Day();
     explicit Day(const int&);
     explicit Day(int&&);
     int getNumber() const;

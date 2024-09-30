@@ -1,5 +1,6 @@
 #pragma once
 #include <string.h>
+#include <stdio.h>
 
 #include "Date.h"
 #include "Time.h"
@@ -14,3 +15,4 @@ struct DateTime
 
 void init_DateTime(struct DateTime*, const struct Date*, const struct Time*);
 char* toShortString(struct DateTime*);
+void print_DateTime(struct DateTime*);

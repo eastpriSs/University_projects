@@ -6,6 +6,11 @@ void Day::tryParse(const std::string& str) noexcept(false)
     if (!isValidValue(numberInMonth)) throw std::invalid_argument("Invalid day " + str);
 }
 
+Day::Day()
+{
+    numberInMonth = 1;
+}
+
 inline bool Day::isValidValue(const int& val)
 {
     return val < 32 && val > 0;

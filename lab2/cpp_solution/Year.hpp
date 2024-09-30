@@ -9,6 +9,7 @@ private:
     inline bool isValidValue(const int& ); // static
 public:
     void tryParse(const std::string&) noexcept(false);
+    Year() = default;
     explicit Year(const int&);
     explicit Year(int&&);
     explicit Year(const std::string&);

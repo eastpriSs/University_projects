@@ -15,3 +15,8 @@ char* toShortString(struct DateTime* this)
     strcat(this->shortStrView, toShortTimeString(&this->_time));
     return this->shortStrView;
 }
+
+void print_DateTime(struct DateTime* this)
+{
+    printf("%s", toShortString(this));
+}

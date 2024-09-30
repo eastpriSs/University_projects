@@ -13,6 +13,7 @@ private:
     Month month;
     Day day;
 public:
+    Date() = default;
     Date(int, int, int);
     Date(const Day&, const Month&, const Year&);
     Date(Day&&, Month&&, Year&&);

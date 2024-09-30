@@ -6,6 +6,11 @@ void Month::tryParse(const std::string& str) noexcept(false)
     if (!isValidValue(number)) throw std::invalid_argument("Invalid month " + str);
 }
 
+Month::Month()
+{
+    number = 1;
+}
+
 inline bool Month::isValidValue(const int& val)
 {
     return val < 13 && val > 0;

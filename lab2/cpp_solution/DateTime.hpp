@@ -8,6 +8,7 @@ private:
     Time time;
     Date date;
 public:
+    DateTime() = default;
     DateTime(Date&&, Time&&);
     DateTime(const Date&, const Time&);
 
