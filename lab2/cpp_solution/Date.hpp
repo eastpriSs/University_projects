@@ -3,6 +3,7 @@
 #include "Day.hpp"
 
 #include <string>
+#include <ctype.h>
 
 class Date
 {
@@ -15,5 +16,6 @@ public:
     Date(const Day&, const Month&, const Year&);
     Date(Day&&, Month&&, Year&&);
 
-    std::string ToShortDateString();
+    void tryParseShort(const std::string&) noexcept(false);
+    std::string ToShortDateString(char sep = '.');
 };

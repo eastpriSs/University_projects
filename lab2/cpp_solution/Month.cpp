@@ -1,5 +1,9 @@
 #include "Month.hpp"
 
+void Month::tryParse(const std::string& str) noexcept(false)
+{   
+    number = std::stoi(str);
+}
 
 inline bool Month::isValidValue(const int& val)
 {

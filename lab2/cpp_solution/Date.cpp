@@ -15,8 +15,36 @@ Date::Date(Day&& d, Month&& m, Year&& y)
 {
 }
 
+std::string getNumberBeforeSymbols(std::string::const_iterator& begin,
+                                    std::string::const_iterator& forward)
+{
+    while (std::isdigit(*forward))
+        ++forward;
+    return std::string(begin, forward);
+}
 
-std::string Date::ToShortDateString()
+void Date::tryParseShort(const std::string& str) noexcept(false)
+{
+    // dd\.mm\.yyyy
+    // in future regex and skip whitespaces
+    auto forward = str.begin();
+    auto begin = str.begin();
+    
+    day.tryParse(getNumberBeforeSymbols(begin, forward));
+    ++forward;
+    begin = forward;
+
+    month.tryParse(getNumberBeforeSymbols(begin, forward));
+    ++forward;
+    begin = forward;
+
+    year.tryParse(getNumberBeforeSymbols(begin, forward));
+    ++forward;
+    begin = forward;
+    
+}
+
+std::string Date::ToShortDateString(char sep)
 {
     std::string str;
     // dd.mm.yyyy
@@ -25,13 +53,13 @@ std::string Date::ToShortDateString()
         str += '0';
     str += std::to_string(day.getNumber());
     
-    str += '.';
+    str += sep;
 
     if (month.getNumber() < 10)
         str += '0';
     str += std::to_string(month.getNumber());
     
-    str += '.';
+    str += sep;
     str += std::to_string(year.getNumber());
 
     return str;    
