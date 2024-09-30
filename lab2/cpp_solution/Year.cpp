@@ -3,6 +3,7 @@
 void Year::tryParse(const std::string& str) noexcept(false)
 {   
     number = std::stoi(str);
+    if (!isValidValue(number)) throw std::invalid_argument("Invalid year " + str);
 }
 
 inline bool Year::isValidValue(const int& val)

@@ -2,8 +2,8 @@ CC=g++
 
 all: main clean
 
-main: main.o Day.o Hour.o Minute.o Second.o Month.o Year.o Date.o Time.o DateTime.o 
-	$(CC) main.o Day.o Hour.o Minute.o Second.o Month.o Year.o Time.o Date.o DateTime.o -o test
+main: main.o Day.o Hour.o Minute.o Second.o Month.o Year.o Date.o Time.o DateTime.o ParsingDateTimeSupport.o
+	$(CC) main.o Day.o Hour.o Minute.o Second.o Month.o Year.o Time.o Date.o DateTime.o ParsingDateTimeSupport.o -o test
 
 main.o: main.cpp
 	$(CC) -c main.cpp
@@ -36,6 +36,9 @@ Date.o: Date.cpp
 
 DateTime.o: DateTime.cpp
 	$(CC) -c DateTime.cpp
+
+ParsingDateTimeSupport.o: ParsingDateTimeSupport.cpp
+	$(CC) -c ParsingDateTimeSupport.cpp
 
 clean:
 	del -rf *.o

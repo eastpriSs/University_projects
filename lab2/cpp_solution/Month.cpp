@@ -3,6 +3,7 @@
 void Month::tryParse(const std::string& str) noexcept(false)
 {   
     number = std::stoi(str);
+    if (!isValidValue(number)) throw std::invalid_argument("Invalid month " + str);
 }
 
 inline bool Month::isValidValue(const int& val)

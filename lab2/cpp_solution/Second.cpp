@@ -1,11 +1,22 @@
 #include "Second.hpp"
 
+void Second::tryParse(const std::string& str) noexcept(false)
+{   
+    value = std::stoi(str);
+    if (!isValidValue(value)) throw std::invalid_argument("Invalid second " + str);
+}
+
+inline bool Second::isValidValue(const int& val)
+{
+    return val <= 59 && val >= 0; 
+}
+
 Second::Second(int v) 
 {
-    if (v > 60 || v < 0)
-    {    // exception
-    }
-    else value = v;
+    if (!isValidValue(v))
+        throw 1;
+    else 
+        value = v;
 }
 
 

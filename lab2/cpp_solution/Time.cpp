@@ -15,6 +15,27 @@ Time::Time(Hour&& h, Minute&& m, Second&& s)
 {
 }
 
+void Time::tryParseShort(const std::string& str) noexcept(false)
+{
+    // hh\.mm\.ss
+    // in future regex and skip whitespaces
+    auto forward = str.begin();
+    auto begin = str.begin();
+    
+    hour.tryParse(getNumberBeforeSymbols(begin, forward));
+    ++forward;
+    begin = forward;
+
+    minute.tryParse(getNumberBeforeSymbols(begin, forward));
+    ++forward;
+    begin = forward;
+
+    second.tryParse(getNumberBeforeSymbols(begin, forward));
+    ++forward;
+    begin = forward;
+    
+}
+
 std::string Time::ToShortTimeString()
 {
     std::string str;

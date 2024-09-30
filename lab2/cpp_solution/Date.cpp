@@ -15,14 +15,6 @@ Date::Date(Day&& d, Month&& m, Year&& y)
 {
 }
 
-std::string getNumberBeforeSymbols(std::string::const_iterator& begin,
-                                    std::string::const_iterator& forward)
-{
-    while (std::isdigit(*forward))
-        ++forward;
-    return std::string(begin, forward);
-}
-
 void Date::tryParseShort(const std::string& str) noexcept(false)
 {
     // dd\.mm\.yyyy
