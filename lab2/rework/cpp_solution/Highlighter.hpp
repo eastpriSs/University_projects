@@ -1,16 +1,20 @@
 #pragma once
-#include "CharDriver.hpp"
+#include "Format.hpp"
+#include "Document.hpp"
 #include "Lexer.hpp"
 #include "Token.hpp"
 
 class Highlighter
 {
 private:
-    CharDriver* chdr = nullptr;
-    Lexer*      lex = nullptr;
+    // in future add RAII
+    Document*   chdr = nullptr;
+    Lexer*      lex = nullptr; 
 public:
     [[nodiscard]]
-    CharDriver highlightCharStream();
+    Document highlightCharStream();
+    void addKeywords(std::vector<std::string>&&);
     Highlighter() = delete;
-    Highlighter(CharDriver*);
+    Highlighter(Document*);
+    Highlighter(Document*, Lexer*);
 };

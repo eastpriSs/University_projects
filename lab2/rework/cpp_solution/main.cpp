@@ -1,10 +1,11 @@
 #include "Highlighter.hpp"
-#include "CharDriver.hpp"
+#include "Document.hpp"
 
 int main()
 {
-    CharDriver ch("test.txt");
+    Document ch("test.txt");
     Highlighter h(&ch);
-    CharDriver o = h.highlightCharStream();
-    o.outCharStream(std::cout);
+    h.addKeywords({"function", "if", "then", "return", "else", "end"});
+    Document o = h.highlightCharStream();
+    o.outDocument(std::cout);
 }

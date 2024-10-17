@@ -6,17 +6,17 @@ namespace Format
 {
     enum class charColor
     {
-        deflt, red
+        black, red, green, yellow, blue, purple, turquoise, white
     };    
      
 
-    class ConsoleColor
+    class SetConsoleColor
     {
     private:
         std::ostream* os;
         void SetColor(int, int);
     public:
-        ConsoleColor(std::ostream&);
+        SetConsoleColor(std::ostream&);
         std::ostream& operator()(int txt = 7, int bg = 0);  
     };
 
