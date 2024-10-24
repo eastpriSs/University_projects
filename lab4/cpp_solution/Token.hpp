@@ -10,7 +10,7 @@ namespace Token
     enum class ttype {
         unknown, 
         eof, lvar, plus, minus, comma, 
-        div, mod, lfloat_num, lnum, lname
+        div, mod, lfloat_num, lnum, lname, llocal, lassgm
     };
 
     class Token
@@ -23,7 +23,8 @@ namespace Token
         
         ttype type = ttype::eof;
         shortTtype stype = shortTtype::eof; 
-        int posStartOfWord;
-        int posEndOfWord;
+        int posStartOfWord = 0;
+        int posEndOfWord = 0;
+        bool syntaxError = false;
     };
 }

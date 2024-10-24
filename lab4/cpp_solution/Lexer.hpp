@@ -21,5 +21,5 @@ public:
     virtual void addKeyword(const std::string&);
     virtual Token::Token scan();
 
-private: const Document* chst;
+protected: const Document* chst;
 };

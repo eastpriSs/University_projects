@@ -6,7 +6,7 @@
 
 class Analyzer
 {
-private:
+protected:
     Lexer* lex;
     Parser* pars;
     // + SemanticParser
@@ -14,6 +14,6 @@ public:
     Analyzer(const Document*);
     virtual Token::Token getAnalysedToken();
     inline void setNewParser(Parser*);
-    inline void addKeyword(std::string&&);
-    inline void addKeyword(const std::string&);
+    void addKeyword(std::string&&);
+    void addKeyword(const std::string&);
 };

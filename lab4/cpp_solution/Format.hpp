@@ -6,7 +6,9 @@ namespace Format
 {
     enum class charColor
     {
-        black, red, green, yellow, blue, purple, turquoise, white
+        Black, Blue, Green, Cyan, Red, Magenta, Brown, LightGray,
+        DarkGray, LightBlue, LightGreen, LightCyan, LightRed, 
+        LightMagenta, Yellow, White
     };    
      
 

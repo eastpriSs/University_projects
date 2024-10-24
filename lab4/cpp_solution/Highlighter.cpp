@@ -31,27 +31,31 @@ Document Highlighter::highlightCharStream()
 {
     Token::Token currTkn = anlzr->getAnalysedToken();
     while (currTkn.stype != Token::shortTtype::eof )
-    {     
+    {   
         switch (currTkn.stype)
         {
         case Token::shortTtype::num:
             chdr->setFormat(currTkn.posStartOfWord, currTkn.posEndOfWord, 
-                            Format::charColor::green);
+                            Format::charColor::Green);
             break;
         
         case Token::shortTtype::keyword:
             chdr->setFormat(currTkn.posStartOfWord, currTkn.posEndOfWord,
-                            Format::charColor::blue);
+                            Format::charColor::Blue);
             break;
         
         case Token::shortTtype::id:
             chdr->setFormat(currTkn.posStartOfWord, currTkn.posEndOfWord,
-                            Format::charColor::turquoise);
+                            Format::charColor::Cyan);
             break;
         
         default: chdr->setFormat(currTkn.posStartOfWord, currTkn.posEndOfWord,
-                            Format::charColor::white);
+                            Format::charColor::White);
         }
+        if (currTkn.syntaxError)
+            chdr->setFormat(currTkn.posStartOfWord, currTkn.posEndOfWord,
+                            Format::charColor::Yellow);
+            
         currTkn = anlzr->getAnalysedToken();
     }
     return *chdr;

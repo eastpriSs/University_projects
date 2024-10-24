@@ -7,7 +7,7 @@ std::ostream& operator<<(std::ostream& os, const Document& d)
     {
         setConsoleColor(static_cast<int>(d.formatChars[i]), 0);
         os << d.chstr[i];
-        setConsoleColor(static_cast<int>(Format::charColor::white), 0);
+        setConsoleColor(static_cast<int>(Format::charColor::White), 0);
     }
     return os;
 }
@@ -49,6 +49,6 @@ Document::Document(const std::string& path)
     while (f.get(c)) 
     {
         chstr.push_back(c);
-        formatChars.push_back(Format::charColor::white);
+        formatChars.push_back(Format::charColor::White);
     }
 }
