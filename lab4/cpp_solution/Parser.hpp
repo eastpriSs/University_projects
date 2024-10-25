@@ -12,6 +12,7 @@ protected:
 public:
     Node* AST = nullptr;
     Parser(Lexer*);
+    virtual ~Parser() = default;
     virtual Token::Token parse();
 };
 

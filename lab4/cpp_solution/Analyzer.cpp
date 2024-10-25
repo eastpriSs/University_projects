@@ -1,5 +1,22 @@
 #include "Analyzer.hpp"
 
+
+Analyzer::Analyzer()
+{
+    lex = nullptr;
+    pars = nullptr;
+}
+
+// std::unique_ptr
+// |
+// V
+Analyzer* Analyzer::make_analyzer_by(Parser* p)
+{
+    Analyzer *a = new Analyzer();
+    a->setNewParser(p);
+    return a;
+}
+
 Analyzer::Analyzer(const Document* code)
 {
     lex = new Lexer(code);
@@ -9,7 +26,11 @@ Analyzer::Analyzer(const Document* code)
 
 Token::Token Analyzer::getAnalysedToken()
 {
-    return pars->parse();
+    if (pars)
+        return pars->parse();
+    
+    throw 1; // TODO
+    return Token::Token();
 }
 
 

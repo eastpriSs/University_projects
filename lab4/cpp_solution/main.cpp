@@ -1,13 +1,16 @@
 #include "Highlighter.hpp"
-#include "AnalyzerForLuaDeclaration.hpp"
+#include "Analyzer.hpp"
 #include "Document.hpp"
-
-// g++ main.cpp Document.cpp Format.cpp Highlighter.cpp Lexer.cpp Parser.cpp Analyzer.cpp
+#include "ParserForLuaVarDeclaration.hpp"
+#include "LexerForLuaVarDeclaration.hpp"
+//  g++ main.cpp Document.cpp Format.cpp Highlighter.cpp Lexer.cpp Parser.cpp Analyzer.cpp AnalyzerForLuaDeclaration.cpp LexerForLuaVarDeclaration.cpp ParserForLuaVarDeclaration.cpp
 
 int main()
 {
     Document a("lua.lua");
-    Highlighter h(&a, new AnalyzerForLuaDeclaration(&a));
-    h.addKeywords({"function", "if", "then", "return", "else", "end", "local"});
+    LexerForLuaVarDeclaration* lex = new LexerForLuaVarDeclaration(&a);
+    lex->addKeyword("local");
+    Analyzer *an = Analyzer::make_analyzer_by(new ParserForLuaVarDeclaration(lex));
+    Highlighter h(&a,an);
     std::cout << h.highlightCharStream();
 }

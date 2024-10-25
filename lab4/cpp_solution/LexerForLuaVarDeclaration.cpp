@@ -7,13 +7,19 @@ LexerForLuaVarDeclaration::LexerForLuaVarDeclaration(const Document* d)
 {
 }
 
+
+bool LexerForLuaVarDeclaration::isKeyword(const std::string& l)
+{
+    return LexerForLuaVarDeclaration::table.find(l) != LexerForLuaVarDeclaration::table.end();
+}
+
 Token::Token LexerForLuaVarDeclaration::scan()
 {
     Token::Token t = Lexer::scan();
     std::string lexem = std::string(chst->getBeginIterator() + t.posStartOfWord,
                                     chst->getBeginIterator() + t.posEndOfWord );
     if (t.stype == Token::shortTtype::keyword) {
-        if (LexerForLuaVarDeclaration::table.find(lexem) != LexerForLuaVarDeclaration::table.end())
+        if (LexerForLuaVarDeclaration::isKeyword(lexem))
             t.type = LexerForLuaVarDeclaration::table[lexem];
     }
     else if (lexem == "=") t.type = Token::ttype::lassgm;

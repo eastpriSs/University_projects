@@ -16,10 +16,12 @@ private:
 public:
     Lexer() = delete;
     Lexer(const Document*);
-
+    virtual ~Lexer() = default;
+    
     virtual void addKeyword(std::string&&);
     virtual void addKeyword(const std::string&);
     virtual Token::Token scan();
 
+    
 protected: const Document* chst;
 };

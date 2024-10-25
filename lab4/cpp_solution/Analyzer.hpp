@@ -10,10 +10,15 @@ protected:
     Lexer* lex;
     Parser* pars;
     // + SemanticParser
+    Analyzer();
 public:
-    Analyzer(const Document*);
+    static Analyzer* make_analyzer_by(Parser*);
+
     virtual Token::Token getAnalysedToken();
     inline void setNewParser(Parser*);
     void addKeyword(std::string&&);
     void addKeyword(const std::string&);
+
+    Analyzer(const Document*); // remove later
+    virtual ~Analyzer() = default;
 };
