@@ -27,7 +27,7 @@ void Highlighter::addKeywords(std::vector<std::string>&& kws)
         anlzr->addKeyword(*i);
 }
 
-Document Highlighter::highlightCharStream()
+Document Highlighter::highlightCharStream() noexcept(false)
 {
     Token::Token currTkn = anlzr->getAnalysedToken();
     while (currTkn.stype != Token::shortTtype::eof )

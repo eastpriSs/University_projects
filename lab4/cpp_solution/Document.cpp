@@ -15,8 +15,17 @@ std::ostream& operator<<(std::ostream& os, const Document& d)
 Document operator+(const Document& lhs, const Document& rhs)
 {
     Document res = lhs;
-    res.formatChars.reserve(lhs.formatChars.capacity() + rhs.formatChars.capacity());
-    res.chstr.reserve(lhs.chstr.capacity() + rhs.chstr.capacity());
+    try 
+    {
+        res.formatChars.reserve(lhs.formatChars.capacity() + rhs.formatChars.capacity());
+        res.chstr.reserve(lhs.chstr.capacity() + rhs.chstr.capacity());
+    } 
+    catch(std::length_error& len_e)
+    {
+        res.formatChars.reserve(lhs.formatChars.size() + rhs.formatChars.size());
+        res.chstr.reserve(lhs.chstr.size() + rhs.chstr.size());
+    }
+
     res.formatChars.insert(res.formatChars.end(), rhs.formatChars.begin(), rhs.formatChars.end());
     res.chstr.insert(res.chstr.end(), rhs.chstr.begin(), rhs.chstr.end());
     return res;

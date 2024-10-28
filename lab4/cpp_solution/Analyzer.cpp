@@ -24,13 +24,12 @@ Analyzer::Analyzer(const Document* code)
 }
 
 
-Token::Token Analyzer::getAnalysedToken()
+Token::Token Analyzer::getAnalysedToken() noexcept(false)
 {
     if (pars)
         return pars->parse();
-    
-    throw 1; // TODO
-    return Token::Token();
+
+    throw std::runtime_error("Analyzer::Parser* pars is nullptr.");
 }
 
 

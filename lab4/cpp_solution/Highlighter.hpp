@@ -12,7 +12,7 @@ private:
     Analyzer*   anlzr = nullptr; 
 public:
     [[nodiscard]]
-    Document highlightCharStream();
+    Document highlightCharStream() noexcept(false);
     void addKeywords(std::vector<std::string>&&);
     Highlighter() = delete;
     Highlighter(Document*);

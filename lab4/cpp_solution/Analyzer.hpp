@@ -14,7 +14,7 @@ protected:
 public:
     static Analyzer* make_analyzer_by(Parser*);
 
-    virtual Token::Token getAnalysedToken();
+    virtual Token::Token getAnalysedToken() noexcept(false);
     inline void setNewParser(Parser*);
     void addKeyword(std::string&&);
     void addKeyword(const std::string&);

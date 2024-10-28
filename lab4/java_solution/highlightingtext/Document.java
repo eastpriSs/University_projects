@@ -12,7 +12,7 @@ public class Document {
     private ArrayList<Format.CharColor> formatChars = new ArrayList<>(DEFAULT_BUFFER_SIZE);
     private List<Character> chstr = new ArrayList<>(DEFAULT_BUFFER_SIZE);
 
-    public Document(String path) {
+    public Document(String path) throws IllegalArgumentException {
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             int ch;
             while ((ch = reader.read()) != -1) {
@@ -20,7 +20,7 @@ public class Document {
                 formatChars.add(Format.CharColor.WHITE);
             }
         } catch (IOException e) {
-            throw new IllegalArgumentException("file did not open.", e);
+            throw new IllegalArgumentException("file " + path + " did not open.", e);
         }
     }
 
