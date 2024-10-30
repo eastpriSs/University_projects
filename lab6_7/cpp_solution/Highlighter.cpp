@@ -15,9 +15,6 @@ Highlighter::Highlighter(Document* chs, Analyzer* a)
 
 Highlighter& Highlighter::operator=(const Highlighter& rhs)
 {
-    if (this == &rhs)
-        return *this;
-        
     chdr = new Document(*rhs.chdr);
     anlzr = new Analyzer(*rhs.anlzr);
     return *this;
