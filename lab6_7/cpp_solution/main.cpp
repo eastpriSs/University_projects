@@ -1,14 +1,17 @@
-#include "Document.hpp"
-#include "AnalyzerForLuaDeclaration.hpp"
-#include "Highlighter.hpp"
-#include "Analyzer.hpp"
+#include <ostream>
+#include "TemplatedDocument/TemplatedDocument.hpp"
 
 int main(int argc, char* argv[])
 {
-    Document d("lua.lua");
-    Analyzer *base = new AnalyzerForLuaDeclaration(&d); 
-    Highlighter h(&d, base);
-    std::cout << h.highlightCharStream();
+    document doc("lua.lua");
+    wdocument docw("python.py");
+
+    std::cout << "\n\n>>>Document<char>\n\n";
+    std::cout << doc;
+
+    std::cout << "\n\n>>>Document<wchar_t>\n\n";
+    std::wcout << docw;
+
 }
 
 

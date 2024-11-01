@@ -20,9 +20,10 @@ public:
     void setFormat(int, int, Format::charColor);
     inline std::vector<char>::const_iterator getBeginIterator() const { return chstr.begin(); } 
     Document(const std::string&);
+    
     ~Document() = default;
 
-    friend std::ostream& operator<<(std::ostream&, const Document&);
+    friend std::ostream& operator<<(std::basic_ostream<char>& os, const Document&);
     friend Document operator+(const Document&, const Document&);
 
 };
