@@ -16,10 +16,11 @@ public class Document<T> {
     }
 
     public Document(String path) throws IllegalArgumentException {
+        
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             int ch;
             while ((ch = reader.read()) != -1) {
-                chstr.add((T) Character.toString((char) ch));
+                chstr.add((T) Character.valueOf((char) ch));
                 formatChars.add(Format.CharColor.WHITE);
             }
         } catch (IOException e) {
