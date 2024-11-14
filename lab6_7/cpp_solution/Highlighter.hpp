@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include "Format.hpp"
 #include "Document.hpp"
 #include "Token.hpp"
@@ -17,5 +18,6 @@ public:
     Highlighter() = delete;
     Highlighter(Document*);
     Highlighter(Document*, Analyzer*);
+    Highlighter(Document*, std::unique_ptr<Analyzer>&);
     Highlighter& operator=(const Highlighter&);
 };

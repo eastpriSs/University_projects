@@ -47,6 +47,7 @@ Document::Document(const std::string& path)
 {
     chstr.reserve(DocumentConst::DEFAULT_BUFFER_SIZE);
     formatChars.reserve(DocumentConst::DEFAULT_BUFFER_SIZE);
+    filename = path;
 
     using std::ifstream;
     ifstream f(path);

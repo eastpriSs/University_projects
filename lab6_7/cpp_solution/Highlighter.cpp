@@ -13,6 +13,13 @@ Highlighter::Highlighter(Document* chs, Analyzer* a)
     anlzr = a;
 }
 
+
+Highlighter::Highlighter(Document* chs, std::unique_ptr<Analyzer>& a)
+{
+    chdr = chs;
+    anlzr = a.release();
+}
+
 Highlighter& Highlighter::operator=(const Highlighter& rhs)
 {
     chdr = new Document(*rhs.chdr);
@@ -55,7 +62,7 @@ Document Highlighter::highlightCharStream() noexcept(false)
         if (currTkn.syntaxError)
             chdr->setFormat(currTkn.posStartOfWord, currTkn.posEndOfWord,
                             Format::charColor::Yellow);
-            
+
         currTkn = anlzr->getAnalysedToken();
     }
     return *chdr;

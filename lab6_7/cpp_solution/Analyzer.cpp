@@ -1,18 +1,27 @@
 #include "Analyzer.hpp"
 
-
 Analyzer::Analyzer()
 {
     lex = nullptr;
     pars = nullptr;
 }
 
-// std::unique_ptr
-// |
-// V
-Analyzer* Analyzer::make_analyzer_by(Parser* p)
+
+Analyzer::Analyzer(Analyzer* pc)
 {
-    Analyzer *a = new Analyzer();
+    lex = pc->lex;
+    pars = pc->pars;
+}
+
+std::unique_ptr<Analyzer> Analyzer::make_analyzer_by(Analyzer* p)
+{
+    std::unique_ptr<Analyzer> a = std::make_unique<Analyzer>(p);
+    return a;
+}
+
+std::unique_ptr<Analyzer> Analyzer::make_analyzer_by(Parser* p)
+{
+    std::unique_ptr<Analyzer> a = std::make_unique<Analyzer>();
     a->setNewParser(p);
     return a;
 }
