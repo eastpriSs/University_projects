@@ -1,1 +1,1 @@
-local helloworld = 999
+var helloworld = 999

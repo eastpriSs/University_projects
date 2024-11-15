@@ -11,12 +11,14 @@ public class Document {
     private static final int DEFAULT_BUFFER_SIZE = 2048;
     private ArrayList<Format.CharColor> formatChars = new ArrayList<>(DEFAULT_BUFFER_SIZE);
     private List<Character> chstr = new ArrayList<>(DEFAULT_BUFFER_SIZE);
+    private String fileName;
 
     private Document()
     {}
 
     public Document(String path) throws IllegalArgumentException {
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            fileName = path;
             int ch;
             while ((ch = reader.read()) != -1) {
                 chstr.add((char) ch);
@@ -30,8 +32,10 @@ public class Document {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Character c : chstr) {
-            sb.append(c);
+        for (int i = 0; i < chstr.size(); ++i)
+        {
+            sb.append(Format.colorCodes.get(formatChars.get(i)));
+            sb.append(chstr.get(i));
         }
         return sb.toString();
     }
@@ -52,6 +56,10 @@ public class Document {
             this.formatChars.add(cl);
         }
         return this;
+    }
+
+    public String getFilename() {
+        return fileName;
     }
 
     public void outDocument(PrintStream os) {

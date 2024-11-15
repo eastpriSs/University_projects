@@ -20,7 +20,7 @@ public class Format {
         WHITE, RED, GREEN, BLUE
     }
 
-    private static final Map<CharColor, String> colorCodes = new HashMap<>();
+    public static final Map<CharColor, String> colorCodes = new HashMap<>();
     static {
         colorCodes.put(CharColor.WHITE, ANSI_WHITE);
         colorCodes.put(CharColor.RED, ANSI_RED);

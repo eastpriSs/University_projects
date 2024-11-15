@@ -18,23 +18,18 @@ public class MyLexer extends Lexer {
     @Override
     public Token scan() {
         Token token = super.scan();
+        String lex = new String();
+        if (token.getStype() == Token.ShortTtype.KEYWORD) {
+            for(int i = token.getPosStartOfWord(); i < token.getPosEndOfWord(); ++i){
+                lex += chstr.get(i);
+            }
+        }
+        token.setType(table.get(lex));
         return token;
     }
 
-    public Token myLexerScan() {
+    public Token myScan() {
         Token token = new Token();
-        String expectedKeyword = "var";
-        int lengthOfKeyword = 3;
-        if (chstr.get(it) == expectedKeyword.charAt(it)) {
-            while (chstr.get(forwardIt) == expectedKeyword.charAt(forwardIt)) {
-                ++forwardIt;
-            }
-            if (lengthOfKeyword == (forwardIt - it))
-                token.setType(table.get(expectedKeyword));
-        }
-        
-        token.setPosStartOfWord(it);
-        token.setPosEndOfWord(forwardIt);
         return token;
     }
 }
